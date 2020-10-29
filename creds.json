@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sendpresents",
+  "private_key_id": "5e1a3486ecb9ab70d3a4417d2fa8abfdc9c0891f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3y7pzmW06Mo6z\nd7jS1BcrWixsNJaDswxSy9Q1ujVao/19TVV/scWLlcjoGFz+J38RQK0T5YJIgius\nNVn6a0yd3pUUHNa2WZfkXy0vKFUTlZLmpmTVTN7LqqFH6U1U8krICttXGjXi6gBU\nYvICQIcJHAT0fF/Tbyza4x4wFvcbGZw1MpDGOqgUHOsFaSUMyBs2Y5UNTRdMJfh+\n0Ra6PaLT904o36QTT7t8WKihCJwTwZpTmEC/WpNYLQj/xQF7Wj7gxiuB2VjuYUyT\ngIVPVBlHmKZrjOMvqBXs6PPqqrS2w0Q/gLnjtjJwcMBaccuP8+21MkCPreFz5DbY\nFEZCBGrhAgMBAAECggEAEJoIqrn0XZIlBS1+hp6tRBd2VUTPxrAk4BK0xbCe8qPG\n+StD2o+0fBYIynwu5C8toWGR8K7lvIZziu/bw4yvJEBvf1xWgayolXKKaozOWIFF\nfmuPxpuVsVhljpESkOZ83kJqyxydOvSvmG/Ck/T/rZE4GlxkrHzJlLD4sFfWtL4N\nQg4OtXz34Y/2czvbPLS4+hCXPSV+Hy42xDmNy9F7GAu4cVhoJme0WFDFpWGIenv9\n3bdoBq6s5td54kxe/7ZSc3J0G4QNVpdmT2Bwc7QMR9KlNW1PsXhhkryypO+hchoy\n+Vu2sXgYoxBwva26T0wtFOomQ6afrKD9wHv6xn00UQKBgQD0FdsV5zfeTxrPPdPU\n0VtU7EVjkDcdPy3UaeFPLPvRUy6xPS12y4qnRzdUQCLGEmY3nA0P4AAEU/JkXy6f\n7xwgLpJQz7p1NOmBvuo59oTCgdVpybMMRrF5jEL3YDWDgq8h5YwIHXsA1rOUQGbo\nmZP3+hhhNvWCeP9mBAEc8/P8+QKBgQDAxHsiioYj0LZ468blJ5aFEEOQx5kQBcEl\ndRxSLewT+DaCj1pIDqN6PlCQ0VPFYHcJV49wp7XS4MuGosKhKGA7s7AVjbvdWbaL\nj85LFM6av6ADKs6lBoSi96B3kTl8l1SkR1oy/lcJ+yqwInR91SyOul3g3mgHe/6r\nrpUJZDTfKQKBgC3NdCE2FEvJOFSvW3LSHntfIt4+D7mTQ3xaqgb7f/2VyGtF+aQT\nKd+eA4nxxxS4GypQRDs4Y4hsYE3pdoxYiESZuKclc+3Okgrg0n8x/VOqnWuOh+TD\n10Xhxic5jJEzEr4fnxlevtg3cddeBnGbcCLWcYC8mXF0VyjDk5nlRWGxAoGAS5P9\nbzJ+m0Y2dLyEc84MrskMpJQNSAHpk2USIIpOuBmmTZQk4oGSyNfrwIvB224R3cDN\nxW6L1E08nuHri0IIUQAHdrvmP0fwUVGloTxcMMIW24cKFBu1HywVZyuyLU4r6mjr\nTXj46Tnnp70qjTdqS9939TVd9ilAVVGSr2bxb9kCgYBgs79MVg7sXWPEmSPuqkEO\nZZRPqdkuL23SXr9phUPSQlSkJh8sxLwKXyPVKvW4w9Tq6LZnL9ORGsfY9uwphZ4Z\nMEOdAdQYWCmSXGQq6kcVeZvKBvNL3qMIl/b9tSgNBBR95oepsT3G7Fgq78Ijg5kK\ntiSmKgEG7KTXNOvEP/Mp0w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "support@sendpresents.iam.gserviceaccount.com",
+  "client_id": "104467734199209512157",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/support%40sendpresents.iam.gserviceaccount.com"
+}
