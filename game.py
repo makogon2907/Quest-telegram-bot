@@ -1,9 +1,10 @@
 from pprint import pprint
 
-import httplib2
-import apiclient.discovery
-from oauth2client.service_account import ServiceAccountCredentials
-
+# import httplib2
+# import apiclient.discovery
+# from oauth2client.service_account import ServiceAccountCredentials
+import config
+from spreadsheet import Spreadsheet
 
 class Problem:
     def __init__(self, beforeproblem, text, answer, correct, incorrect, reusable):
@@ -26,31 +27,42 @@ from config import labirint_id
 from config import info_id
 
 # Авторизуемся и получаем service — экземпляр доступа к API
-credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    CREDENTIALS_FILE,
-    ['https://www.googleapis.com/auth/spreadsheets',
-     'https://www.googleapis.com/auth/drive'])
-httpAuth = credentials.authorize(httplib2.Http())
-service = apiclient.discovery.build('sheets', 'v4', http = httpAuth)
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(
+#     CREDENTIALS_FILE,
+#     ['https://www.googleapis.com/auth/spreadsheets',
+#      'https://www.googleapis.com/auth/drive'])
+# httpAuth = credentials.authorize(httplib2.Http())
+# service = apiclient.discovery.build('sheets', 'v4', http = httpAuth)
+#
+# # Пример чтения файла
+# field = service.spreadsheets().values().get(
+#     spreadsheetId=labirint_id,
+#     range='A1:J11',
+#     majorDimension='ROWS'
+# ).execute()['values']
+#
+# arproblems = service.spreadsheets().values().get(
+#     spreadsheetId=info_id,
+#     range='A2:G7',
+#     majorDimension='ROWS'
+# ).execute()['values']
+#
+# arreactions = service.spreadsheets().values().get(
+#     spreadsheetId=info_id,
+#     range='A14:B30',
+#     majorDimension='ROWS'
+# ).execute()['values']
 
-# Пример чтения файла
-field = service.spreadsheets().values().get(
-    spreadsheetId=labirint_id,
-    range='A1:J11',
-    majorDimension='ROWS'
-).execute()['values']
 
-arproblems = service.spreadsheets().values().get(
-    spreadsheetId=info_id,
-    range='A2:G7',
-    majorDimension='ROWS'
-).execute()['values']
+labyrinth_sheet = Spreadsheet('creds.json')
+labyrinth_sheet.setSpreadsheetById(config.labirint_id)
 
-arreactions = service.spreadsheets().values().get(
-    spreadsheetId=info_id,
-    range='A14:B30',
-    majorDimension='ROWS'
-).execute()['values']
+info_sheet = Spreadsheet('creds.json')
+info_sheet.setSpreadsheetById(config.info_id)
+
+field = labyrinth_sheet.get_info_from_sheet(0, 0, 11, 11)
+arproblems = info_sheet.get_info_from_sheet(1, 0, 7, 7)
+arreactions = info_sheet.get_info_from_sheet(13, 0, 30, 2)
 
 namelist = dict()
 problems = dict()
