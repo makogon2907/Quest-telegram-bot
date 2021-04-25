@@ -1,8 +1,3 @@
-from pprint import pprint
-
-# import httplib2
-# import apiclient.discovery
-# from oauth2client.service_account import ServiceAccountCredentials
 import config
 from spreadsheet import Spreadsheet
 
@@ -17,41 +12,6 @@ class Problem:
         self.solved = 0
         self.tried = 0
 
-
-# Файл, полученный в Google Developer Console
-CREDENTIALS_FILE = 'creds.json'
-
-# ID Google Sheets документа (можно взять из его URL)
-
-from config import labirint_id
-from config import info_id
-
-# Авторизуемся и получаем service — экземпляр доступа к API
-# credentials = ServiceAccountCredentials.from_json_keyfile_name(
-#     CREDENTIALS_FILE,
-#     ['https://www.googleapis.com/auth/spreadsheets',
-#      'https://www.googleapis.com/auth/drive'])
-# httpAuth = credentials.authorize(httplib2.Http())
-# service = apiclient.discovery.build('sheets', 'v4', http = httpAuth)
-#
-# # Пример чтения файла
-# field = service.spreadsheets().values().get(
-#     spreadsheetId=labirint_id,
-#     range='A1:J11',
-#     majorDimension='ROWS'
-# ).execute()['values']
-#
-# arproblems = service.spreadsheets().values().get(
-#     spreadsheetId=info_id,
-#     range='A2:G7',
-#     majorDimension='ROWS'
-# ).execute()['values']
-#
-# arreactions = service.spreadsheets().values().get(
-#     spreadsheetId=info_id,
-#     range='A14:B30',
-#     majorDimension='ROWS'
-# ).execute()['values']
 
 
 labyrinth_sheet = Spreadsheet('creds.json')
@@ -105,34 +65,3 @@ for cur in arreactions:
 def getCharFromField(pos):
     return field[pos[0]][pos[1]]
 
-
-# for i in range(len(field)):
-#     for j in range(len(field[i])):
-#         if field[i][j] == 'o' or field[i][j] == 'о':
-#             field[i][j] = chr(ord('a') + random.randint(0, 25))
-
-# Пример записи в файл
-
-# values = service.spreadsheets().values().batchUpdate(
-#     spreadsheetId=spreadsheet_id,
-#     body={
-#         "valueInputOption": "USER_ENTERED",
-#         "data": [
-#             {"range": 'A18:A18',
-#              "majorDimension": "COLUMNS",
-#              "values": [["This information is written by Artem's bot"]]}
-# 	    ]
-#     }
-# ).execute()
-
-# values = service.spreadsheets().values().batchUpdate(
-#     spreadsheetId=spreadsheet_id,
-#     body={
-#         "valueInputOption": "USER_ENTERED",
-#         "data": [
-#             {"range": 'A18:H27',
-#              "majorDimension": "COLUMNS",
-#              "values": values}
-# 	    ]
-#     }
-# ).execute()
