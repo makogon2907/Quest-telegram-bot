@@ -1,12 +1,10 @@
 import game
 import storage
 from exceptions import *
-
 import logging
-
 from aiogram import Bot, Dispatcher, executor, types
-
 import config
+import keyboards
 
 API_TOKEN = config.TOKEN
 
@@ -22,23 +20,6 @@ host = game.GameHost()
 
 @dp.message_handler(commands=['start'])
 async def welcome(message: types.Message):
-    # keyboard
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=False)
-
-    item0 = types.KeyboardButton(host.prepared_reactions.whereIsSheet)
-    item1 = types.KeyboardButton(host.prepared_reactions.goup)
-    item2 = types.KeyboardButton('.')
-    item3 = types.KeyboardButton(host.prepared_reactions.goleft)
-    item4 = types.KeyboardButton(host.prepared_reactions.whereIAm)
-    item5 = types.KeyboardButton(host.prepared_reactions.goright)
-    item6 = types.KeyboardButton('.')
-    item7 = types.KeyboardButton(host.prepared_reactions.godown)
-    item8 = types.KeyboardButton('.')
-
-    markup.row(item0, item1, item2)
-    markup.row(item3, item4, item5)
-    markup.row(item6, item7, item8)
-
     # проверка на читерство
     if host.players.get(message.from_user.id):
         print(message.from_user.first_name, message.from_user.last_name, ' попытался считерить)')
@@ -46,7 +27,6 @@ async def welcome(message: types.Message):
         await bot.send_message(message.from_user.id,
                                'Кажется, вы уже регестрировались в базе, регестрироваться заново нечестно)' \
                                + host.get_current_position(message.from_user.id))
-
 
     else:
         print(message.from_user.first_name, message.from_user.last_name, ' присоединился к игре лабиринт')
@@ -58,16 +38,16 @@ async def welcome(message: types.Message):
         await bot.send_message(message.from_user.id,
                                "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>. Читай историю ниже и... вперед!".format(
                                    message.from_user, await bot.get_me()),
-                               parse_mode='html', reply_markup=markup)
+                               parse_mode='html', reply_markup=keyboards.default_markup)
 
         await bot.send_message(message.from_user.id, storage.intro)
         await bot.send_message(message.from_user.id, storage.info.format(
             storage.warn),
-                               parse_mode='html', reply_markup=markup
+                               parse_mode='html', reply_markup=keyboards.default_markup
                                )
 
         await bot.send_message(message.from_user.id, host.get_current_position(message.from_user.id),
-                               reply_markup=markup)
+                               reply_markup=keyboards.default_markup)
 
 
 @dp.callback_query_handler(text="confirm")
@@ -88,6 +68,7 @@ async def rejection(call: types.CallbackQuery):
 async def answer(message: types.Message):
     if message.chat.type == 'private':
         try:
+            print(message.from_user.first_name, message.from_user.last_name, message.text)
             answer, keyboard = host.make_action(message.from_user.id, message.text)
 
             if keyboard.defined:
