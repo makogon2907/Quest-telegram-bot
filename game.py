@@ -169,6 +169,7 @@ class GameHost:
 
     def register(self, student_id: int):
         self.players[student_id] = Student(student_id)
+        self.players[student_id].position = self.special_positions.startPosition
 
     def _get_char_from_field(self, pos) -> str:
         return self.field[pos[0]][pos[1]]

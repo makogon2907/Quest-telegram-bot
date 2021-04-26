@@ -71,9 +71,13 @@ def welcome(message):
 def answer(message):
     if message.chat.type == 'private':
         try:
-            answer, keyboard = host.make_action(message.from_user.id)
+            answer, keyboard = host.make_action(message.from_user.id, message.text)
+            bot.send_message(message.chat.id, answer)
+
         except GameNotStarted:
-            pass
+            bot.send_message(message.chat.id, 'Вы почему-то не зарегестрированы в базе, '
+            'нажмите на /start, '
+            'тогда вы попадете в базу тех, кто ходит по лабиринту')
 
 
 # RUN
