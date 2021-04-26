@@ -104,9 +104,9 @@ class PreparedReactions:
         if message == self.godown:
             return True, (1, 0)
         if message == self.goleft:
-            return True, (-1, 0)
+            return True, (0, -1)
         if message == self.goright:
-            return True, (1, 0)
+            return True, (0, 1)
 
         return False, (0, 0)
 
@@ -184,6 +184,8 @@ class GameHost:
             return True, 'Вы сейчас безопасно стоите на клетке < ' \
                    + ans + ' > , продолжайте исследование!)'
 
+        return False, ''
+
     def _check_move_reactions_and_move(self, student: Student, message: str) -> (bool, str):
         (succeed, delta) = self.prepared_reactions.convert_reaction_to_delta_position(message)
         if not succeed:
@@ -259,7 +261,7 @@ class GameHost:
     def accept_confirmation(self, student_id: int) -> (str, ReplyKeyboard):
         student = self.players[student_id]
         answer = student.confirm_submited_answer()
-        pass
+        return answer, ReplyKeyboard()
 
     def reject_confirmation(self, student_id: int) -> (str, ReplyKeyboard):
         student = self.players[student_id]
@@ -295,6 +297,6 @@ class GameHost:
             return student.solving_session.prepare_confirmation_message()
 
         # CHECK MOVE
-        (succeed, answer) = self._check_move_reactions_and_move(succeed, message)
+        (succeed, answer) = self._check_move_reactions_and_move(student, message)
 
         return answer, ReplyKeyboard()
