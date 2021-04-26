@@ -1,0 +1,2 @@
+class GameNotStarted(Exception):
+    pass
